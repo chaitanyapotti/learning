@@ -29,13 +29,10 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ConsoleApplication1.cpp">
+    <ClCompile Include="C++ Primer Questions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="fibonacci.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="InsertionSort.cpp">
+    <ClCompile Include="Chapter 2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
