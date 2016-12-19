@@ -12,6 +12,7 @@ namespace C_sharp_code
         {
             List<int> arr = new List<int> { 1,3,24,12,46,32};
             InsertionSortExample(ref arr);
+            
             foreach (var item in arr)
             {
                 Console.WriteLine(item);

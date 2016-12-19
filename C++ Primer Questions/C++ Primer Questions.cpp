@@ -4,27 +4,13 @@
 #include "stdafx.h"
 
 void Chapter2();
-void furlong();
-void BlindMice();
-void Run();
-void Example2();
-void Example3();
+void Chapter3();
 
 int main()
 {
 	//Chapter2();
-	//Example2();
-	Example3();
+	Chapter3();
+	
     return 0;
 }
-void Example2()
-{
-	furlong();
-}
-void Example3()
-{
-	BlindMice();
-	BlindMice();
-	Run();
-	Run();
-}
+

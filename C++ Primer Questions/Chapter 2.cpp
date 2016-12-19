@@ -1,15 +1,22 @@
 #include "stdafx.h"
 #include <iostream>
 using namespace std;
+void furlong();
+void BlindMice();
+void Run();
+void Example2();
+void Example3();
 void Chapter2()
 {
 	
-	int number;
+	/*int number;
 	cout << "Hello World \n";
 	cout << "Enter the number of carrots: ";
 	cin >> number;
-	cout << endl <<"You have " << ++number << " carrots after the transcation" <<endl;
+	cout << endl <<"You have " << ++number << " carrots after the transcation" <<endl;*/
 	//cin.get();
+	//Example2();
+	Example3();
 }
 
 void furlong()
@@ -27,4 +34,15 @@ void BlindMice()
 void Run()
 {
 	cout << "See how they run \n";
+}
+void Example2()
+{
+	furlong();
+}
+void Example3()
+{
+	BlindMice();
+	BlindMice();
+	Run();
+	Run();
 }
