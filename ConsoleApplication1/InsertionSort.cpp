@@ -8,5 +8,5 @@ using namespace std;
 int InsertionSort(int num[])
 {
 	
-	
+	return 0;
 }
