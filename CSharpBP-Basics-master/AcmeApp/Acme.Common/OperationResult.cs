@@ -15,14 +15,16 @@
             this.Success = success;
             this.Message = message;
         }
-        private static OperationResult  myVar;
+        private static OperationResult myVar;
 
         public static OperationResult MyProperty
         {
-            get {
+            get
+            {
                 if (null == myVar)
                     myVar = new OperationResult();
-                return myVar; }
+                return myVar;
+            }
             set { myVar = value; }
         }
 
