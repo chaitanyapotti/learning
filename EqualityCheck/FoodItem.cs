@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EqualityCheck
 {
@@ -23,12 +19,8 @@ namespace EqualityCheck
             this.group = group;
         }
 
-        public override string ToString()
-        {
-            return name;
-        }
-
-        public bool Equals(FoodItem other) => this.Name == other.Name && this.Group == other.Group;
+        public override string ToString() => name;
+        public bool Equals(FoodItem other) => Name == other.Name && Group == other.Group;
 
         public override bool Equals(object obj) => (obj is FoodItem) ? Equals((FoodItem)obj) : false;
 

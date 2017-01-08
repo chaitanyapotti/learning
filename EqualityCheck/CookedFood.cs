@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EqualityCheck
 {
     internal sealed class CookedFood : Food, IEquatable<CookedFood>
     {
         private string cookingMethod;
-
-        public string CookingMethod => cookingMethod;
 
         /// <summary>
         /// Cooked Food Constructor
@@ -23,30 +17,26 @@ namespace EqualityCheck
             this.cookingMethod = cookingMethod;
         }
 
-        public override string ToString()
-        {
-            return $"{CookingMethod} {Name}";
-        }
+        public string CookingMethod => cookingMethod;
 
         public override bool Equals(object obj)
         {
             if (!base.Equals(obj))
                 return false;
             CookedFood rhs = (CookedFood)obj;
-            return this.cookingMethod == rhs.cookingMethod;
+            return cookingMethod == rhs?.cookingMethod;
             //return base.Equals(obj);
-        }
-        public override int GetHashCode()
-        {
-            return base.GetHashCode() ^ this.cookingMethod.GetHashCode();
         }
 
         public bool Equals(CookedFood other)
         {
             if (!base.Equals(other))
                 return false;
-            return this.CookingMethod == other.CookingMethod;
+            return CookingMethod == other.CookingMethod;
             //throw new NotImplementedException();
         }
+        public override int GetHashCode() => base.GetHashCode() ^ CookingMethod.GetHashCode();
+
+        public override string ToString() => $"{CookingMethod} {Name}";
     }
 }

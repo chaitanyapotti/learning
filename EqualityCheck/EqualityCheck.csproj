@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalorieCount.cs" />
     <Compile Include="CookedFood.cs" />
     <Compile Include="Food.cs" />
     <Compile Include="FoodItem.cs" />
+    <Compile Include="FoodNameComparer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

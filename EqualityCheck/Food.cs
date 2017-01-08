@@ -1,13 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EqualityCheck
 {
-    internal class Food
+    internal class Food : IEnumerable
     {
+        private readonly List<string> types = new List<string> { "Banana", "Pear", "Apple" };
 
         private readonly string name;
 
@@ -34,14 +33,18 @@ namespace EqualityCheck
             if (ReferenceEquals(obj, this))
                 return true;
             Food rhs = obj as Food;
-            return this.name == rhs.name && this.group == rhs.group;
+            return name == rhs.name && group == rhs.group;
             //return base.Equals(obj);
         }
 
-        public override int GetHashCode() => this.name.GetHashCode() ^ this.group.GetHashCode();
+        public override int GetHashCode() => name.GetHashCode() ^ group.GetHashCode();
 
-        public static bool operator ==(Food x, Food y) => object.Equals(x, y);
-        public static bool operator !=(Food x, Food y) => !object.Equals(x, y);
-
+        public static bool operator ==(Food x, Food y) => Equals(x, y);
+        public static bool operator !=(Food x, Food y) => !Equals(x, y);
+        public IEnumerator GetEnumerator()
+        {
+            return types.GetEnumerator();
+            //throw new System.NotImplementedException();
+        }
     }
 }

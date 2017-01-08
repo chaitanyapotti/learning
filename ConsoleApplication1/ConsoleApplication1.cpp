@@ -11,6 +11,21 @@ int fibonacci(int num);
 int main()
 {
 	cout << "Hello world.! \n";
+
+	int i = 0;
+
+	while (i <= 10)
+	{
+		if (i == 0)
+		{
+			cout << "N \t 10*N \t 100*N \t 1000*N \n \n";
+		}
+		else
+		{
+			cout << i << " \t " << 10 * i << " \t " << 100 * i << " \t " << 1000 * i << " \n";
+		}
+		i++;
+	}
 	//return 0;
 	// Sample code for cpp
 	/*int a = 12;
