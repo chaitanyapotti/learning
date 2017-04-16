@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{45AF8573-222B-48CE-A8DE-47EEF7E34004}</ProjectGuid>
+    <ProjectGuid>{509262B4-7BDE-484A-965C-71A9CDF3112C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EqualityCheck</RootNamespace>
-    <AssemblyName>EqualityCheck</AssemblyName>
+    <RootNamespace>Polygons</RootNamespace>
+    <AssemblyName>Polygons</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,18 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CalorieCount.cs" />
-    <Compile Include="CookedFood.cs" />
-    <Compile Include="DictionaryComparer.cs" />
-    <Compile Include="Food.cs" />
-    <Compile Include="FoodItem.cs" />
-    <Compile Include="FoodItemEqualityComparer.cs" />
-    <Compile Include="FoodNameComparer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Polygons.Library\Polygons.Library.csproj">
+      <Project>{0d7d0e90-6f5f-4086-8c20-d2aa564df66c}</Project>
+      <Name>Polygons.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

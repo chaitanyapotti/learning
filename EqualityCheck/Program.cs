@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace EqualityCheck
@@ -7,6 +9,56 @@ namespace EqualityCheck
     internal class Program
     {
         public static void Main()
+        {
+            //string[] arr1 = { "apple", "orange", "pineapple" };
+            //string[] arr2 = { "Apple", "orange", "pineapple" };
+
+            //var arrayEq = (IStructuralEquatable)arr1;
+            //bool structEqual = arrayEq.Equals(arr2, StringComparer.OrdinalIgnoreCase);
+            //Console.WriteLine(structEqual);
+
+            //var arrayEq2 = (IStructuralComparable)arr1;
+            //int structEqual2 = arrayEq2.CompareTo(arr2, StringComparer.Ordinal);
+            //Console.WriteLine(structEqual2);
+            //DemoComparable();
+            //ComparerDemo();
+
+            //OldCode();
+
+            Dictionary<string, int> dict = new Dictionary<string, int>();
+            dict.Add("a", 1);
+            dict.Add("b", 3);
+            dict.Add("c", 2);
+            var xy = dict.OrderBy(x => x.Value);
+
+            foreach (var item in xy)
+            {
+                Console.WriteLine(item.Value);
+            }
+
+        }
+
+        private static void DemoComparable()
+        {
+            //If we want custom equality comparision just here, implement IEqualityComparer just here
+
+            var foodItems = new HashSet<FoodItem>(FoodItemEqualityComparer.Instance)
+            {
+                new FoodItem("apple", FoodGroup.Fruit),
+                new FoodItem("banana", FoodGroup.Fruit),
+                new FoodItem("pear", FoodGroup.Fruit),
+                new FoodItem("Pear", FoodGroup.Fruit)
+            };
+
+
+            foreach (var item in foodItems)
+            {
+                Console.WriteLine(item);
+
+            }
+        }
+
+        private static void ComparerDemo()
         {
             Food[] food =
             {
@@ -16,14 +68,11 @@ namespace EqualityCheck
                 new Food("orange", FoodGroup.Fruit)
             };
             string[] arr = { "orange", "banana", "apple", "pear" };
-            Array.Sort(food, new FoodNameComparer());
+            Array.Sort(food, FoodNameComparer.Instance);
             foreach (var item in food)
             {
                 Console.WriteLine(item);
             }
-
-            //OldCode();
-
         }
 
         private static void OldCode()

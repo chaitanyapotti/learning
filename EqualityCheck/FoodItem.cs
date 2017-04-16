@@ -22,7 +22,7 @@ namespace EqualityCheck
         public override string ToString() => name;
         public bool Equals(FoodItem other) => Name == other.Name && Group == other.Group;
 
-        public override bool Equals(object obj) => (obj is FoodItem) ? Equals((FoodItem)obj) : false;
+        public override bool Equals(object obj) => (obj is FoodItem) && Equals((FoodItem)obj);
 
         public static bool operator ==(FoodItem lhs, FoodItem rhs) => lhs.Equals(rhs);
 

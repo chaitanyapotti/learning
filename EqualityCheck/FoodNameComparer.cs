@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace EqualityCheck
 {
-    class FoodNameComparer : IComparer<Food>
+    internal class FoodNameComparer : Comparer<Food>
     {
-        public int Compare(Food x, Food y)
+        public static FoodNameComparer Instance { get; } = new FoodNameComparer();
+
+        private FoodNameComparer()
+        {
+
+        }
+        public override int Compare(Food x, Food y)
         {
             if (x == null && y == null) return 0;
             if (x == null) return -1;
