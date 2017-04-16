@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.Configuration;
+using System.Windows;
 using PersonRepository.Interface;
 using PersonRepository.CSV;
 using PersonRepository.Service;
@@ -33,7 +35,6 @@ namespace ExtensibilityPeopleViewer
 
         private void SQLFetchButton_Click(object sender, RoutedEventArgs e)
         {
-            ClearListBox();
             SetRepo("SQL");
         }
 
@@ -78,6 +79,20 @@ namespace ExtensibilityPeopleViewer
                     break;
             }
             return repo;
+        }
+
+        //Dynamic Loading 
+        private static IPersonRepository GetRepository()
+        {
+            //Need to add app.config - RepositoryType key
+            IPersonRepository repo = null;
+            var typeName = ConfigurationManager.AppSettings["RepositoryType"];
+            Type repoType = Type.GetType(typeName);
+            object repoInstance = Activator.CreateInstance(repoType);
+            repo = repoInstance as IPersonRepository;
+            return repo;
+            //Need to add post build command line to bring the files from other project to this project bin folder
+            //xcopy "$(ProjectDir)..\RepositoriesForBinFolder\*.*" "$(SolutionDir)PeopleViewer.Layered\bin\$(ConfigurationName)" / Y
         }
     }
 }
