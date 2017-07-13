@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BBE0E231-C780-4DA1-8564-4E4A5C9C7AB1}</ProjectGuid>
+    <ProjectGuid>{AB819FD2-1C01-411B-8ACA-F8C7479362BA}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SampleProblems</RootNamespace>
-    <AssemblyName>SampleProblems</AssemblyName>
+    <RootNamespace>Spoj</RootNamespace>
+    <AssemblyName>Spoj</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -21,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,12 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HttpClient, Version=0.8.5068.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Http.fs.0.8.0.0\lib\net40\HttpClient.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.3.5.8\lib\35\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,22 +40,22 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="XPlot.Plotly, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlot.Plotly.1.3.0\lib\net45\XPlot.Plotly.dll</HintPath>
-    </Reference>
-    <Reference Include="XPlot.Plotly.WPF, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XPlot.Plotly.WPF.1.3.0\lib\net45\XPlot.Plotly.WPF.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CPTTRN1.cs" />
+    <Compile Include="CPTTRN2.cs" />
+    <Compile Include="CPTTRN3.cs" />
+    <Compile Include="CPTTRN4.cs" />
+    <Compile Include="CPTTRN5.cs" />
+    <Compile Include="CPTTRN7.cs" />
+    <Compile Include="CPTTRN6.cs" />
+    <Compile Include="HalfOfHalf.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IQuestion.cs" />
-    <Compile Include="Question1.cs" />
+    <Compile Include="SumOfDigits.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
