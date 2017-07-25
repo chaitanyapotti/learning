@@ -6,10 +6,15 @@
         xmlns:local="clr-namespace:TempApp"
         mc:Ignorable="d"
         xmlns:ucs ="clr-namespace:TempApp.Properties"
+        xmlns:core="clr-namespace:System;assembly=mscorlib"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <Grid.Resources>
-           
+            <ObjectDataProvider x:Key="myEnum" MethodName="GetValues" ObjectType="{x:Type core:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type Type="local:Party"/>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
         </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -21,6 +26,6 @@
         </Grid.ColumnDefinitions>
         <TextBox Grid.Row="0" Text="" x:Name="UcLabel"/>
         <TextBox Grid.Row="0" Grid.Column="1" x:Name="UcLabel2" Text=""/>
-        <Button Grid.Row="1" Grid.Column="0" x:Name="BtnButton" />
+        <Button Grid.Row="1" Grid.Column="0" x:Name="BtnButton" Content="click me" Click="BtnButton_Click"/>
     </Grid>
 </Window >

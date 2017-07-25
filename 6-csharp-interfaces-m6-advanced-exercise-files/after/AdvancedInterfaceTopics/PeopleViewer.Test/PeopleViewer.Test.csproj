@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{31C2E258-7B2D-43B9-B147-38462F76E8F9}</ProjectGuid>
+    <ProjectGuid>{6E1FB725-65FB-472B-89D9-197C108CFD5D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PeopleViewer.Test</RootNamespace>

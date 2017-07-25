@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D85FBE12-9358-47A4-89D1-3A291FF371D2}</ProjectGuid>
+    <ProjectGuid>{EF09051F-C668-4EC3-BFE5-330C5FDD2231}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PeopleViewer</RootNamespace>
