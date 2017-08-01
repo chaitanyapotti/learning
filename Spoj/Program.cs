@@ -18,7 +18,10 @@ namespace Spoj
             //CPTTRN4 prob = new CPTTRN4();
             //CPTTRN5 prob = new CPTTRN5();
             //CPTTRN6 prob = new CPTTRN6();
-            CPTTRN7 prob = new CPTTRN7();
+            //CPTTRN7 prob = new CPTTRN7();
+            //HS12HDPW prob = new HS12HDPW();
+            //HS12HDPW prob = new HS12HDPW();
+            SMPDIV prob = new SMPDIV();
 
         }
     }

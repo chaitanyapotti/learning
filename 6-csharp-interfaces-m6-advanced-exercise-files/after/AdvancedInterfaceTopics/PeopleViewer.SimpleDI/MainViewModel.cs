@@ -13,21 +13,18 @@ namespace PeopleViewer
             repository = SimpleContainer.Get<IPersonRepository>();
         }
 
-        private IEnumerable<Person> people;
+        private IEnumerable<Person> _people;
         public IEnumerable<Person> People
         {
-            get { return people; }
+            get => _people;
             set
             {
-                people = value;
+                _people = value;
                 RaisePropertyChanged("People");
             }
         }
 
-        public string RepositoryType
-        {
-            get { return repository.GetType().ToString(); }
-        }
+        public string RepositoryType => repository.GetType().ToString();
 
         public void FetchData()
         {
@@ -37,15 +34,14 @@ namespace PeopleViewer
         public void ClearData()
         {
             People = new List<Person>();
-        }
+        } 
 
         #region INotifyPropertyChanged Members
 
         public event PropertyChangedEventHandler PropertyChanged;
         private void RaisePropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         #endregion
