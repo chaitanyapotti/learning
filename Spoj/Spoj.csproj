@@ -51,12 +51,21 @@
     <Compile Include="CPTTRN5.cs" />
     <Compile Include="CPTTRN7.cs" />
     <Compile Include="CPTTRN6.cs" />
+    <Compile Include="CPTTRN8.cs" />
     <Compile Include="HalfOfHalf.cs" />
     <Compile Include="HS12HDPW.cs" />
     <Compile Include="HS12MBR.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SMPCIRC.cs" />
     <Compile Include="SMPDIV.cs" />
+    <Compile Include="SMPSEQ7.cs" />
+    <Compile Include="SMPSEQ6.cs" />
+    <Compile Include="SMPSEQ5.cs" />
+    <Compile Include="SMPSEQ4.cs" />
+    <Compile Include="SMPSEQ3.cs" />
+    <Compile Include="SMPSUM.cs" />
+    <Compile Include="SMPWOW.cs" />
     <Compile Include="SumOfDigits.cs" />
   </ItemGroup>
   <ItemGroup>
