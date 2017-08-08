@@ -29,8 +29,8 @@ namespace Spoj
             //SMPSEQ4 prob = new SMPSEQ4();
             //SMPSEQ5 prob = new SMPSEQ5();
             //SMPSEQ6 prob = new SMPSEQ6();
-            SMPSEQ7 prob = new SMPSEQ7();
-
+            //SMPSEQ7 prob = new SMPSEQ7();
+            BSCXOR prob = new BSCXOR();
         }
     }
 }
