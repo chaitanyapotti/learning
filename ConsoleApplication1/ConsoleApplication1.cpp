@@ -7,10 +7,26 @@
 using namespace std;
 
 int fibonacci(int num);
-
+void RockPaperScissors();
+void Diamond();
+void PalindromeCheck();
+void RightJustify();
+void Shuffle();
+void MinShuffles();
+void SieveOfEratosthenes();
+void MergeArrays();
+void PascalTriangle();
 int main()
 {
-	cout << "Hello world.! \n";
+	//RockPaperScissors();
+	//Diamond();
+	//PalindromeCheck();
+	//Shuffle();
+	//MinShuffles();
+	//SieveOfEratosthenes();
+	//MergeArrays();
+	PascalTriangle();
+	/*cout << "Hello world.! \n";
 
 	int i = 0;
 
@@ -25,7 +41,7 @@ int main()
 			cout << i << " \t " << 10 * i << " \t " << 100 * i << " \t " << 1000 * i << " \n";
 		}
 		i++;
-	}
+	}*/
 	//return 0;
 	// Sample code for cpp
 	/*int a = 12;
@@ -106,6 +122,5 @@ int main()
 	cin.get();
 
 }
-
 
 

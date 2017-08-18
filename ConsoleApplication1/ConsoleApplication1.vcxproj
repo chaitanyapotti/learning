@@ -153,6 +153,7 @@
     <ClCompile Include="ConsoleApplication1.cpp" />
     <ClCompile Include="fibonacci.cpp" />
     <ClCompile Include="InsertionSort.cpp" />
+    <ClCompile Include="RockPaperScissors.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
