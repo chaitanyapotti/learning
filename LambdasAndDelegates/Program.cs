@@ -43,7 +43,7 @@ namespace LambdasAndDelegates
             myAction2 = Console.WriteLine;
 
             myAction2?.Invoke(1);
-
+             
             data.ProcessAction(2, 3, myMultiplyAction);
 
             Func<int, int, int> funcAddDel = (x, y) => x + y;
