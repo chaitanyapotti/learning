@@ -61,11 +61,11 @@ void RockPaperScissors()
 void Diamond()
 {
 	int N = 3;
-	for (size_t i = 0; i <= 2 * N; i++)
+	for (int i = 0; i <= 2 * N; i++)
 	{
 		if (i < N)
 		{
-			for (size_t j = 0; j <= 2 * N; j++)
+			for (int j = 0; j <= 2 * N; j++)
 			{
 				if (j < N - i || j > N + i) cout << ' ';
 				else cout << '*';
@@ -73,7 +73,7 @@ void Diamond()
 		}
 		else
 		{
-			for (size_t j = 0; j <= 2 * N; j++)
+			for (int j = 0; j <= 2 * N; j++)
 			{
 				if (j < i - N || j > 3 * N - i) cout << ' ';
 				else cout << setiosflags(ios::fixed | ios::showpoint) << setprecision(2) << '*';
@@ -110,7 +110,7 @@ bool isPalindrome(string s)
 	string* child = new string[n];
 	child[0] = "sq";
 	child[1] = "wq";
-	for (size_t i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		if (toupper(s[i]) != toupper(s[n - 1 - i])) return false;
 	}
@@ -177,7 +177,7 @@ void MinShuffles()
 
 bool isSorted(int* a, int n)
 {
-	for (size_t i = 1; i < n; i++)
+	for (int i = 1; i < n; i++)
 	{
 		if (a[i] < a[i - 1]) return false;
 	}
@@ -189,11 +189,11 @@ void SieveOfEratosthenes()
 	const int n = 1000;
 	bool arr[n] = { false };
 	arr[2] = arr[3] = true;
-	for (size_t i = 5; i < n; i += 2)
+	for (int i = 5; i < n; i += 2)
 	{
 		arr[i] = true;
 		double sqtn = sqrt(i);
-		for (size_t j = 3; j <= sqtn; j++)
+		for (int j = 3; j <= sqtn; j++)
 		{
 			if (i % j == 0) { arr[i] = false; break; }
 		}
