@@ -5,13 +5,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lesson1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Window.Resources>
-
+        <Style TargetType="Button">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="PreviewMouseDown">
+                    <BeginStoryboard >
+                        <Storyboard>
+                            <DoubleAnimation BeginTime="0:0:0" RepeatBehavior="Forever" AutoReverse="True" Duration="0:0:2"  From="200" To="50" Storyboard.TargetProperty="Width"></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+            <Style.Setters>
+                <EventSetter Event="MouseDoubleClick" Handler="UIElement_OnMouseDown"></EventSetter>
+                <Setter Property ="Background" Value="Blue" />
+            </Style.Setters>
+        </Style>
+        <local:ItemTemplateSelectorCombo x:Key="TemplateSelectorCombo"></local:ItemTemplateSelectorCombo>
+        <DataTemplate x:Key="Normal">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Name}" />
+                <TextBlock Text="{Binding Age}" />
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="AbNormal">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding Name}" />
+                <TextBlock Text="{Binding Age}" />
+            </StackPanel>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
-        <Button Width="250" Height="25" Template="{StaticResource ButtonTemplate}" Background="Blue" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="_Edit">
+                <MenuItem Command="Undo" Header="_Undo" />
+                <MenuItem Command="Cut" />
+                <MenuItem Command="Copy" />
+                <MenuItem Command="Paste" />
+                <MenuItem Header="_Select All" InputGestureText="Ctrl+A" />
+            </MenuItem>
+        </Menu>
+        <Button Grid.Row="1" Width="250" Height="25" Template="{StaticResource ButtonTemplate}" Background="Blue" >
             <Ellipse Width="50" Height="15" Fill="Yellow"></Ellipse>
         </Button>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" MouseDown="UIElement_OnMouseDown">
+            <Label Target="{Binding ElementName=Box}" Content="_Name" Width="100" Height="50" MouseDown="UIElement_OnMouseDown"/>
+            <TextBox x:Name="Box" SpellCheck.IsEnabled="True" Width="200" Height="20" Margin="5"/>
+            <ComboBox x:Name="ComboBox" ItemTemplateSelector="{StaticResource TemplateSelectorCombo}" ItemsSource="{Binding Path=list}" Width="200" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical" Width="{Binding Path=Width, RelativeSource={RelativeSource TemplatedParent} }"></StackPanel>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" x:Name="Panel">
+            <Button Content="Click me!" Height="50" Width="150" Margin="5" Command="ApplicationCommands.Copy"></Button>
+            <Button Content="Click me!" Height="50" Width="150" Margin="5" />
+        </StackPanel>
     </Grid>
 </Window>
