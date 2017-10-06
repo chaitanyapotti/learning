@@ -4,10 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lesson4"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid PreviewMouseDown="UIElement_OnMouseDown">
-        <local:EllipseRectangle MouseDown="Rect_MouseDown" Width="50" Height="50"  />
+        
+        <!--<local:EllipseRectangle MouseDown="Rect_MouseDown" Width="50" Height="50"  />
         <Path Fill="Blue">
             <Path.Data>
                 <PathGeometry>
@@ -17,8 +19,10 @@
                     </PathFigure>
                 </PathGeometry>
             </Path.Data>
-        </Path>
-        <Grid.Background>
+        </Path>-->
+        <syncfusion:PivotSchemaDesigner />
+        <syncfusion:PivotGridControl />
+        <!--<Grid.Background>
             <DrawingBrush Stretch="Uniform">
                 <DrawingBrush.Drawing>
                     <DrawingGroup>
@@ -32,13 +36,13 @@
                         </GeometryDrawing>
                         <GeometryDrawing Brush="Red">
                             <GeometryDrawing.Geometry>
-                                <RectangleGeometry Rect="50, 8, 19, 36"></RectangleGeometry>
+                                <RectangleGeometry Rect="50, 8, 19, 36"></RectangleGeometry> 
                             </GeometryDrawing.Geometry>
                         </GeometryDrawing>
                     </DrawingGroup>
                 </DrawingBrush.Drawing>
             </DrawingBrush>
-        </Grid.Background>
+        </Grid.Background>-->
     </Grid>
     <!-- We can use visual brush to make an image of any content on screen instead of drawing brush-->
 </Window>
