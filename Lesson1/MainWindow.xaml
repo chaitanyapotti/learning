@@ -16,6 +16,7 @@
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
+
             </Style.Triggers>
             <Style.Setters>
                 <EventSetter Event="MouseDoubleClick" Handler="UIElement_OnMouseDown"></EventSetter>

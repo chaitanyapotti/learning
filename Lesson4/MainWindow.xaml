@@ -7,8 +7,51 @@
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Storyboard x:Key="Storyboard1"/>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid PreviewMouseDown="UIElement_OnMouseDown">
-        
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualStateGroup.Transitions>
+                    <VisualTransition GeneratedDuration="0:0:1">
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="progressBar">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.24"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="progressBar">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1.2"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="progressBar">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FFCB2222"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="progressBar">
+                                <EasingColorKeyFrame KeyTime="0" Value="#FF732525"/>
+                            </ColorAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="progressBar">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="progressBar">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="progressBar">
+                                <EasingDoubleKeyFrame KeyTime="0" Value="0.542"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </VisualTransition>
+                </VisualStateGroup.Transitions>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="99*"/>
+            <ColumnDefinition Width="419*"/>
+        </Grid.ColumnDefinitions>
+
         <!--<local:EllipseRectangle MouseDown="Rect_MouseDown" Width="50" Height="50"  />
         <Path Fill="Blue">
             <Path.Data>
@@ -20,9 +63,9 @@
                 </PathGeometry>
             </Path.Data>
         </Path>-->
-        <syncfusion:PivotSchemaDesigner />
-        <syncfusion:PivotGridControl />
-        <!--<Grid.Background>
+        <!--<syncfusion:PivotSchemaDesigner />
+        <syncfusion:PivotGridControl />-->
+        <Grid.Background>
             <DrawingBrush Stretch="Uniform">
                 <DrawingBrush.Drawing>
                     <DrawingGroup>
@@ -36,13 +79,76 @@
                         </GeometryDrawing>
                         <GeometryDrawing Brush="Red">
                             <GeometryDrawing.Geometry>
-                                <RectangleGeometry Rect="50, 8, 19, 36"></RectangleGeometry> 
+                                <RectangleGeometry Rect="50, 8, 19, 36"></RectangleGeometry>
                             </GeometryDrawing.Geometry>
                         </GeometryDrawing>
                     </DrawingGroup>
                 </DrawingBrush.Drawing>
             </DrawingBrush>
-        </Grid.Background>-->
+        </Grid.Background>
+        <ProgressBar x:Name="progressBar" Grid.Column="1" HorizontalAlignment="Left" Height="10" Margin="11.8,76,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.5,0.5" IsIndeterminate="True">
+            <ProgressBar.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FF341010" Offset="0.458"/>
+                </LinearGradientBrush>
+            </ProgressBar.BorderBrush>
+            <ProgressBar.Foreground>
+                <RadialGradientBrush>
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FF5F1010" Offset="0.471"/>
+                </RadialGradientBrush>
+            </ProgressBar.Foreground>
+            <ProgressBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ProgressBar.RenderTransform>
+        </ProgressBar>
+        <Path>
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure StartPoint="0,130">
+                        <LineSegment Point="100,130" />
+                        <LineSegment Point="120,130" />
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+        <Path>
+            <Path.Data>
+                <GeometryGroup>
+                    <PathGeometry>
+                        <PathFigure StartPoint="0,130">
+                            <LineSegment Point="100,130" />
+                            <LineSegment Point="120,130" />
+                        </PathFigure>
+                    </PathGeometry>
+                    <PathGeometry>
+                        <PathFigure StartPoint="0,130">
+                            <LineSegment Point="100,130" />
+                            <LineSegment Point="120,130" />
+                        </PathFigure>
+                    </PathGeometry>
+                </GeometryGroup>
+            </Path.Data>
+        </Path>
+        <Button Content="click me" Grid.ColumnSpan="2" Margin="0,110,418.4,110.8">
+            <Button.Clip>
+                <EllipseGeometry Center="50,50" RadiusX="50" RadiusY="50"></EllipseGeometry>
+            </Button.Clip>
+            <Button.OpacityMask>
+                <RadialGradientBrush>
+                    <GradientStop Offset="0.5" Color="Blue"></GradientStop>
+                    <GradientStop Offset="1" Color="Red"></GradientStop>
+                </RadialGradientBrush>
+            </Button.OpacityMask>
+        </Button>
     </Grid>
     <!-- We can use visual brush to make an image of any content on screen instead of drawing brush-->
 </Window>
