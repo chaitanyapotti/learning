@@ -7,10 +7,192 @@
         xmlns:s ="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Grid.Resources>
+    <Window.Resources>
+        <DataTemplate x:Key="DataTemplate" DataType="{x:Type local:Person}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Name: " />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Name, ValidatesOnDataErrors=True}" />
+                <Label Grid.Row="1" Grid.Column="0" Content="Age: " />
+                <TextBox x:Name="AgeBox" Grid.Row="1" Grid.Column="1" Text="{Binding Age, ValidatesOnDataErrors=True}"></TextBox>
+            </Grid>
+            <DataTemplate.Triggers>
+                <DataTrigger Value="22" Binding="{Binding Age}">
+                    <Setter TargetName="AgeBox" Property="Foreground" Value="Blue" />
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" Storyboard.TargetName="AgeBox"
+                                                BeginTime="0:0:0" From="Red" To="Blue" AccelerationRatio="0.25" Duration="0:0:1"></ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="(Label.Background).(SolidColorBrush.Color)" Storyboard.TargetName="AgeBox"
+                                                From="Blue" To="Red" AccelerationRatio="0.25" Duration="0:0:1"></ColorAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+        <!--xml data provider can also use xml Namespace to define schema. remember to include all those syntax in every xpath while using xml ns-->
+        <XmlDataProvider x:Key="Provider" XPath="/myDoc/item" >
+            <x:XData>
+                <myDoc xmlns="">
+                    <item title="One" />
+                    <item title="Two">
+                        <item title="First Child" />
+                        <item title="Second Child">
+                            <item title="First grandchild" />
+                            <item title="Second grandchild" />
+                        </item>
+                    </item>
+                </myDoc>
+            </x:XData>
+        </XmlDataProvider>
+
+        <!--<XmlDataProvider x:Key="Provider2" XPath="/*[localname()='myDoc']/*[localname()='item']" >-->
+        <XmlDataProvider x:Key="Provider2" XPath="/td:myDoc/td:item" >
+            <XmlDataProvider.XmlNamespaceManager>
+                <XmlNamespaceMappingCollection>
+                    <XmlNamespaceMapping Prefix="td" Uri="http://pluralsight.com/ns"></XmlNamespaceMapping>
+                </XmlNamespaceMappingCollection>
+            </XmlDataProvider.XmlNamespaceManager>
+            <x:XData>
+                <myDoc xmlns="http://pluralsight.com/ns">
+                    <item title="One" />
+                    <item title="Two">
+                        <item title="First Child" />
+                        <item title="Second Child">
+                            <item title="First grandchild" />
+                            <item title="Second grandchild" />
+                        </item>
+                    </item>
+                </myDoc>
+            </x:XData>
+        </XmlDataProvider>
+
+        <XmlDataProvider x:Key="Provider3" >
+            <x:XData>
+                <Items xmlns="">
+                    <Item Title="Foo.." GroupName="First Group"/>
+                    <Item Title="Foo2.." GroupName="First Group"/>
+                    <Item Title="Foo.3." GroupName="First Group"/>
+                    <Item Title="Foo.4." GroupName="Second Group"/>
+                    <Item Title="Foo..5" GroupName="Second Group"/>
+                    <Item Title="Foo..6" GroupName="Third Group"/>
+                </Items>
+            </x:XData>
+        </XmlDataProvider>
+
+        <CollectionViewSource x:Key="CollectionViewSource" Source="{Binding Source={StaticResource Provider3}, XPath=Items/Item}">
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="@GroupName" />
+            </CollectionViewSource.GroupDescriptions>
+        </CollectionViewSource>
+
+        <ObjectDataProvider ObjectType="{x:Type local:Person}" x:Key="ObjectDataProvider">
+
+        </ObjectDataProvider>
+    </Window.Resources>
+    <StackPanel>
+        <StackPanel.Resources>
             <s:String x:Key="String">My String</s:String>
-        </Grid.Resources>
+        </StackPanel.Resources>
         <TextBlock x:Name="Block" Text="{Binding Path=Length, Source={StaticResource String}}"></TextBlock>
-    </Grid>
+        <TextBlock x:Name="Block2" Text="{Binding Path=ServicePack, Source={x:Static s:Environment.OSVersion}}"></TextBlock>
+
+        <Grid DataContext="{x:Static s:Environment.OSVersion}">
+            <TextBlock Text="{Binding Path=ServicePack}"></TextBlock>
+            <TextBlock Text="{Binding Path=Platform}"></TextBlock>
+
+        </Grid>
+
+        <Grid>
+            <ContentControl Content="{Binding Path=src, RelativeSource={RelativeSource AncestorType=Window}}" ContentTemplate="{StaticResource DataTemplate}"></ContentControl>
+        </Grid>
+        <StackPanel>
+            <ListBox ItemsSource="{Binding}" ItemTemplate="{StaticResource DataTemplate}" IsSynchronizedWithCurrentItem="True"></ListBox>
+            <TextBlock Text="Name: "/>
+            <TextBlock Text="{Binding /Name}" />
+        </StackPanel>
+
+        <StackPanel>
+            <TreeView DataContext="{StaticResource Provider2}" ItemsSource="{Binding}" x:Name="TreeView">
+                <TreeView.ItemTemplate>
+                    <!--<HierarchicalDataTemplate ItemsSource="{Binding XPath=item}">-->
+                    <HierarchicalDataTemplate ItemsSource="{Binding XPath=td:item}">
+                        <TextBlock Text="{Binding XPath=@title}"></TextBlock>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </StackPanel>
+
+        <StackPanel>
+            <Menu>
+                <MenuItem Header="MyMenu" ItemsSource="{Binding Source={StaticResource CollectionViewSource}}">
+                    <MenuItem.ItemContainerStyle>
+                        <Style TargetType="{x:Type MenuItem}">
+                            <Setter Property="Header" Value="{Binding XPath=@Title}" />
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                    <MenuItem.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.HeaderTemplate>
+                                <DataTemplate>
+                                    <Grid Background="Gainsboro">
+                                        <TextBlock Text="{Binding Name}" Margin="4" />
+                                        <Rectangle Stroke="{x:Static SystemColors.MenuBrush}" VerticalAlignment="Top" Height="1"></Rectangle>
+                                        <Rectangle Stroke="#bbb" VerticalAlignment="Bottom" Height="1"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </GroupStyle.HeaderTemplate>
+                        </GroupStyle>
+                    </MenuItem.GroupStyle>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        <StackPanel>
+            <ListBox ItemsSource="{x:Static Fonts.SystemFontFamilies}" Height="100">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" FontFamily="{Binding}"></TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                
+            </ListBox>
+        </StackPanel>
+        <StackPanel>
+            <ListBox ItemsSource="{x:Static Fonts.SystemFontFamilies}" Height="100" >
+                <ListBox.Template>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <Border BorderThickness="1" BorderBrush="Black" CornerRadius="1">
+                            <ScrollViewer>
+                                <!--<ScrollViewer.Clip>
+                                    <RectangleGeometry Rect="0,0,118,65" RadiusX="9" RadiusY="9"></RectangleGeometry>
+                                </ScrollViewer.Clip>-->
+                                <VirtualizingStackPanel IsItemsHost="True" />
+                            </ScrollViewer>
+                        </Border>
+                    </ControlTemplate>
+                </ListBox.Template>
+            </ListBox>
+        </StackPanel>
+    </StackPanel>
+
 </Window>

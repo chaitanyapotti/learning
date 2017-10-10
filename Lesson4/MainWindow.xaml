@@ -64,7 +64,7 @@
             </Path.Data>
         </Path>-->
         <!--<syncfusion:PivotSchemaDesigner />
-        <syncfusion:PivotGridControl />-->
+        <syncfusion:PivotGridControl  x:Name="Control"/>-->
         <Grid.Background>
             <DrawingBrush Stretch="Uniform">
                 <DrawingBrush.Drawing>

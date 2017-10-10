@@ -23,6 +23,7 @@ namespace Lesson4
         public MainWindow()
         {
             InitializeComponent();
+            //Control.PivotEngine.EnableOnDemandCalculations = true;
         }
 
         private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
