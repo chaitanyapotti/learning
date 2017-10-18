@@ -24,8 +24,9 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBox Grid.Row="0" Text="" x:Name="UcLabel"/>
-        <TextBox Grid.Row="0" Grid.Column="1" x:Name="UcLabel2" Text=""/>
-        <Button Grid.Row="1" Grid.Column="0" x:Name="BtnButton" Content="click me" Click="BtnButton_Click"/>
+        <TextBox Grid.Row="0" x:Name="UcLabel" Text="{Binding Value1, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="UcLabel2" Text="{Binding Value2, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Proper, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <!--<Button Grid.Row="1" Grid.Column="0" x:Name="BtnButton" Content="click me" Click="BtnButton_Click"/>-->
     </Grid>
 </Window >

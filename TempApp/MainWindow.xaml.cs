@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,24 +15,65 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TempApp.Annotations;
 
 namespace TempApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
+        private double _proper;
+        private double _value1;
+        private double _value2;
+
         public MainWindow()
         {
             InitializeComponent();
-            Calculate();
+            this.DataContext = this;
+            //Calculate();
+            //if (UcLabel.Text != "" && UcLabel2.Text != "")
             //BtnButton.Content = UcLabel.Text + UcLabel2.Text;
+        }
+
+        public double Proper
+        {
+            get { return _proper; }
+            set
+            {
+                _proper = Value1 + Value2;
+                OnPropertyChanged();
+            }
+        }
+
+        public double Value1
+        {
+            get { return _value1; }
+            set
+            {
+                _value1 = value;
+                Proper = Value1 + Value2;
+
+                OnPropertyChanged();
+            }
+        }
+
+        public double Value2
+        {
+            get { return _value2; }
+            set
+            {
+                _value2 = value;
+                Proper = Value1 + Value2;
+
+                OnPropertyChanged();
+            }
         }
 
         public async void Calculate()
         {
-            for (;;)
+            for (; ; )
             {
                 double sum = 0;
 
@@ -42,7 +85,7 @@ namespace TempApp
                     }
                 }
 
-                await Task.Run((Action) Function);
+                await Task.Run((Action)Function);
                 UcLabel.Text = "sum = " + sum;
                 await Task.Run(() =>
                     {
@@ -103,8 +146,15 @@ namespace TempApp
         //    wind.BtnButton.Content = wind.UcLabel.Text + wind.UcLabel2.Text;
 
         //}
-        
 
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
     public enum Party

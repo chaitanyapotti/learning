@@ -13,6 +13,8 @@ namespace FriendOrganizer.UI
             InitializeComponent();
             DataContext = viewModel;
             Loaded += (sender, args) => viewModel.Load();
+
+
         }
     }
 }
