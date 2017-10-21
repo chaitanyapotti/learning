@@ -44,6 +44,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddNumbers.cs" />
     <Compile Include="CPTTRN1.cs" />
     <Compile Include="CPTTRN2.cs" />
     <Compile Include="CPTTRN3.cs" />

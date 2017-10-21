@@ -12,8 +12,8 @@ namespace FriendOrganizer.UI
         {
             InitializeComponent();
             DataContext = viewModel;
-            Loaded += (sender, args) => viewModel.Load();
-
+            //Loaded += (sender, args) => viewModel.Load();
+            Loaded += async (sender, args) => await viewModel.LoadAsync();
 
         }
     }

@@ -52,6 +52,14 @@
     <Compile Include="Migrations\201710150959324_InitialDatabase.Designer.cs">
       <DependentUpon>201710150959324_InitialDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710211509346_InitialDatabase1.cs" />
+    <Compile Include="Migrations\201710211509346_InitialDatabase1.Designer.cs">
+      <DependentUpon>201710211509346_InitialDatabase1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710211514237_InitialDatabase2.cs" />
+    <Compile Include="Migrations\201710211514237_InitialDatabase2.Designer.cs">
+      <DependentUpon>201710211514237_InitialDatabase2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -68,6 +76,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710150959324_InitialDatabase.resx">
       <DependentUpon>201710150959324_InitialDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710211509346_InitialDatabase1.resx">
+      <DependentUpon>201710211509346_InitialDatabase1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710211514237_InitialDatabase2.resx">
+      <DependentUpon>201710211514237_InitialDatabase2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
