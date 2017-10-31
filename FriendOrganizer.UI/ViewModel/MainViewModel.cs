@@ -13,60 +13,76 @@ namespace FriendOrganizer.UI.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+
         #region fields
-        private readonly IFriendDataService _friendDataService;
-        private Friend _selectedFriend;
+        //private readonly IFriendDataService _friendDataService;
+        //private Friend _selectedFriend;
+        public INavigationViewModel NavigationViewModel { get;}
+
+        public IFriendDetailViewModel FriendDetailViewModel { get; }
+
         #endregion
 
         #region props
-        public ObservableCollection<Friend> Friends { get; set; } = new ObservableCollection<Friend>();
+        //public ObservableCollection<Friend> Friends { get; set; } = new ObservableCollection<Friend>();
 
 
-        public Friend SelectedFriend
-        {
-            get { return _selectedFriend; }
-            set
-            {
-                _selectedFriend = value;
-                OnPropertyChanged();
-            }
-        }
+        //public Friend SelectedFriend
+        //{
+        //    get { return _selectedFriend; }
+        //    set
+        //    {
+        //        _selectedFriend = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
         #endregion
 
         #region ctor
-        public MainViewModel(IFriendDataService friendDataService)
+        //public MainViewModel(IFriendDataService friendDataService)
+        //{
+        //    _friendDataService = friendDataService;
+        //}
+        public MainViewModel(INavigationViewModel navigationViewModel, IFriendDetailViewModel friendDetailViewModel)
         {
-            _friendDataService = friendDataService;
+            NavigationViewModel = navigationViewModel;
+            FriendDetailViewModel = friendDetailViewModel;
         }
-
+        
         #endregion
 
         #region methods
 
-        public void Load()
-        {
-            //var friends = _friendDataService.GetAll();
-            var friends = _friendDataService.GetAll();
+        //public void Load()
+        //{
+        //    //var friends = _friendDataService.GetAll();
+        //    var friends = _friendDataService.GetAll();
 
-            Friends.Clear();
-            foreach (var friend in friends)
-            {
-                Friends.Add(friend);
-            }
-        }
+        //    Friends.Clear();
+        //    foreach (var friend in friends)
+        //    {
+        //        Friends.Add(friend);
+        //    }
+        //}
 
         public async Task LoadAsync()
         {
-            //var friends = _friendDataService.GetAll();
-            var friends = await _friendDataService.GetAllAsync();
+            ////var friends = _friendDataService.GetAll();
+            //var friends = await _friendDataService.GetAllAsync();
 
-            Friends.Clear();
-            foreach (var friend in friends)
-            {
-                Friends.Add(friend);
-            }
+            //Friends.Clear();
+            //foreach (var friend in friends)
+            //{
+            //    Friends.Add(friend);
+            //}
+            await NavigationViewModel.LoadDataAsync();
         }
+
+        //public async Task LoadFriendByIdAsync(int friendId)
+        //{
+        //    await FriendDetailViewModel.LoadAsync(friendId);
+        //}
 
         #endregion
 

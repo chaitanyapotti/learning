@@ -45,5 +45,23 @@ namespace FriendOrganizer.UI.Data
             //yield return new Friend() { FirstName = "Julia", LastName = "Huber" };
             //yield return new Friend() { FirstName = "Chrissi", LastName = "Egin" };
         }
+
+        public async Task<Friend> GetFriendByIdAsync(int friendId)
+        {
+            using (var ctx = _contextCreator())
+            {
+                return await ctx.Friends.AsNoTracking().SingleAsync(f => f.Id == friendId);
+            }
+        }
+
+        public async Task SaveAsync(Friend friend)
+        {
+            using (var ctx = _contextCreator())
+            {
+                ctx.Friends.Attach(friend);
+                ctx.Entry(friend).State = EntityState.Modified;
+                await ctx.SaveChangesAsync();
+            }
+        }
     }
 }

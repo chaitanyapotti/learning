@@ -32,7 +32,9 @@ namespace Spoj
             //SMPSEQ6 prob = new SMPSEQ6();
             //SMPSEQ7 prob = new SMPSEQ7();
             //BSCXOR prob = new BSCXOR();
-            AddNumbers prob = new AddNumbers();
+            //AddNumbers prob = new AddNumbers();
+            //TEST prob = new TEST();
+            FCTRL2 prob = new FCTRL2();
         }
     }
 }
