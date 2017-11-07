@@ -7,25 +7,24 @@ using System.Threading.Tasks;
 using FriendOrganizer.DataAccess;
 using FriendOrganizer.Model;
 
-namespace FriendOrganizer.UI.Data
+namespace FriendOrganizer.UI.Data.Repositories
 {
-    public class FriendDataService : IFriendDataService
+    public class FriendRepository : IFriendRepository
     {
-        private readonly Func<FriendOrganizerDbContext> _contextCreator;
+        private readonly FriendOrganizerDbContext _context;
 
         //private readonly Func<FriendOrganizerDbContext> _contextCreator;
 
 
-        public FriendDataService(Func<FriendOrganizerDbContext> contextCreator)
+        public FriendRepository(FriendOrganizerDbContext context)
         {
-            _contextCreator = contextCreator;
+            _context = context;
         }
         public IEnumerable<Friend> GetAll()
         {
-            using (var ctx = _contextCreator())
-            {
-                return ctx.Friends.AsNoTracking().ToList();
-            }
+
+            return _context.Friends.ToList();
+
             ////TODO: Get friends from Database
             //yield return new Friend() {FirstName = "Thomas", LastName = "Huber"};
             //yield return new Friend() {FirstName = "Andreas", LastName = "Boehler"};
@@ -35,10 +34,9 @@ namespace FriendOrganizer.UI.Data
         //async
         public async Task<List<Friend>> GetAllAsync()
         {
-            using (var ctx = _contextCreator())
-            {
-                return await ctx.Friends.AsNoTracking().ToListAsync();
-            }
+
+            return await _context.Friends.ToListAsync();
+
             ////TODO: Get friends from Database
             //yield return new Friend() {FirstName = "Thomas", LastName = "Huber"};
             //yield return new Friend() {FirstName = "Andreas", LastName = "Boehler"};
@@ -48,20 +46,17 @@ namespace FriendOrganizer.UI.Data
 
         public async Task<Friend> GetFriendByIdAsync(int friendId)
         {
-            using (var ctx = _contextCreator())
-            {
-                return await ctx.Friends.AsNoTracking().SingleAsync(f => f.Id == friendId);
-            }
+            return await _context.Friends.SingleAsync(f => f.Id == friendId);
         }
 
-        public async Task SaveAsync(Friend friend)
+        public async Task SaveAsync()
         {
-            using (var ctx = _contextCreator())
-            {
-                ctx.Friends.Attach(friend);
-                ctx.Entry(friend).State = EntityState.Modified;
-                await ctx.SaveChangesAsync();
-            }
+            await _context.SaveChangesAsync();
+        }
+
+        public bool HasChanges()
+        {
+            return _context.ChangeTracker.HasChanges();
         }
     }
 }

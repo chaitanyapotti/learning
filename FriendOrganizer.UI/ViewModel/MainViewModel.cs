@@ -8,18 +8,33 @@ using System.Text;
 using System.Threading.Tasks;
 using FriendOrganizer.Model;
 using FriendOrganizer.UI.Data;
+using FriendOrganizer.UI.Event;
+using FriendOrganizer.UI.View.Service;
+using Prism.Events;
 
 namespace FriendOrganizer.UI.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+        private IEventAggregator _eventAggregator;
+        private readonly IMessageDialogService _messageDialogService;
+        private Func<IFriendDetailViewModel> _friendDetailViewModelCreator;
+        private IFriendDetailViewModel _friendDetailViewModel;
 
         #region fields
         //private readonly IFriendDataService _friendDataService;
         //private Friend _selectedFriend;
-        public INavigationViewModel NavigationViewModel { get;}
+        public INavigationViewModel NavigationViewModel { get; }
 
-        public IFriendDetailViewModel FriendDetailViewModel { get; }
+        public IFriendDetailViewModel FriendDetailViewModel
+        {
+            get { return _friendDetailViewModel; }
+            private set
+            {
+                _friendDetailViewModel = value;
+                OnPropertyChanged();
+            }
+        }
 
         #endregion
 
@@ -44,12 +59,16 @@ namespace FriendOrganizer.UI.ViewModel
         //{
         //    _friendDataService = friendDataService;
         //}
-        public MainViewModel(INavigationViewModel navigationViewModel, IFriendDetailViewModel friendDetailViewModel)
+        public MainViewModel(INavigationViewModel navigationViewModel, Func<IFriendDetailViewModel> friendDetailViewModelCreator, IEventAggregator eventAggregator, IMessageDialogService messageDialogService)
         {
             NavigationViewModel = navigationViewModel;
-            FriendDetailViewModel = friendDetailViewModel;
+            _friendDetailViewModelCreator = friendDetailViewModelCreator;
+            _eventAggregator = eventAggregator;
+            _messageDialogService = messageDialogService;
+            _eventAggregator.GetEvent<OpenFriendDetailViewEvent>().Subscribe(OnOpenFriendDetailView);
+
         }
-        
+
         #endregion
 
         #region methods
@@ -77,6 +96,18 @@ namespace FriendOrganizer.UI.ViewModel
             //    Friends.Add(friend);
             //}
             await NavigationViewModel.LoadDataAsync();
+        }
+
+        private async void OnOpenFriendDetailView(int friendId)
+        {
+            if (FriendDetailViewModel != null && FriendDetailViewModel.HasChanges)
+            {
+                var result = _messageDialogService.ShowOkCancelDialog("You've made changes. Navigate away?", "Question");
+                if (result == MessageDialogResult.Cancel) return;
+
+            }
+            FriendDetailViewModel = _friendDetailViewModelCreator();
+            await FriendDetailViewModel.LoadAsync(friendId);
         }
 
         //public async Task LoadFriendByIdAsync(int friendId)
