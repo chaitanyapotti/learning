@@ -7,9 +7,7 @@ using Prism.Events;
 
 namespace FriendOrganizer.UI.Event
 {
-    //int will be the friend id
-    public class OpenFriendDetailViewEvent : PubSubEvent<int?>
+    public class AfterFriendDeletedEvent : PubSubEvent<int>
     {
-
     }
 }

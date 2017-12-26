@@ -72,8 +72,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Data\Lookups\IFriendLookupDataService.cs" />
+    <Compile Include="Data\Lookups\IProgrammingLanguageLookupDataService.cs" />
     <Compile Include="Data\Lookups\LookupDataService.cs" />
     <Compile Include="Data\Repositories\IFriendRepository.cs" />
+    <Compile Include="Event\AfterFriendDeletedEvent.cs" />
     <Compile Include="Event\AfterFriendSavedEvent.cs" />
     <Compile Include="Event\OpenFriendDetailViewEvent.cs" />
     <Compile Include="Startup\BootStrapper.cs" />
@@ -92,6 +94,7 @@
     </Compile>
     <Compile Include="View\Service\IMessageDialogService.cs" />
     <Compile Include="View\Service\MessageDialogService.cs" />
+    <Compile Include="Wrapper\FriendPhoneNumberWrapper.cs" />
     <Compile Include="Wrapper\FriendWrapper.cs" />
     <Compile Include="Wrapper\ModelWrapper.cs" />
     <Compile Include="Wrapper\NotifyDataErrorInfoBase.cs" />

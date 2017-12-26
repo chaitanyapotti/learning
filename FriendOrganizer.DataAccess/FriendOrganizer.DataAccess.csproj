@@ -31,10 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -60,6 +60,14 @@
     <Compile Include="Migrations\201710211514237_InitialDatabase2.Designer.cs">
       <DependentUpon>201710211514237_InitialDatabase2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712252122586_addedprogramminglanguage.cs" />
+    <Compile Include="Migrations\201712252122586_addedprogramminglanguage.Designer.cs">
+      <DependentUpon>201712252122586_addedprogramminglanguage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712252238419_addedfriendphonenumbers.cs" />
+    <Compile Include="Migrations\201712252238419_addedfriendphonenumbers.Designer.cs">
+      <DependentUpon>201712252238419_addedfriendphonenumbers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,7 +78,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -82,6 +92,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710211514237_InitialDatabase2.resx">
       <DependentUpon>201710211514237_InitialDatabase2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712252122586_addedprogramminglanguage.resx">
+      <DependentUpon>201712252122586_addedprogramminglanguage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712252238419_addedfriendphonenumbers.resx">
+      <DependentUpon>201712252238419_addedfriendphonenumbers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

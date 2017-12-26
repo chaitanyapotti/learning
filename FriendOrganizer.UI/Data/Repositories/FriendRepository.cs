@@ -46,7 +46,7 @@ namespace FriendOrganizer.UI.Data.Repositories
 
         public async Task<Friend> GetFriendByIdAsync(int friendId)
         {
-            return await _context.Friends.SingleAsync(f => f.Id == friendId);
+            return await _context.Friends.Include(x => x.PhoneNumbers).SingleAsync(f => f.Id == friendId);
         }
 
         public async Task SaveAsync()
@@ -57,6 +57,26 @@ namespace FriendOrganizer.UI.Data.Repositories
         public bool HasChanges()
         {
             return _context.ChangeTracker.HasChanges();
+        }
+
+        public void Add(Friend friend)
+        {
+            _context.Friends.Add(friend);
+        }
+
+        public void Delete(Friend friend)
+        {
+            _context.Friends.Remove(friend);
+        }
+
+        public void AddPhoneNumber(FriendPhoneNumber friendPhoneNumber)
+        {
+            _context.FriendPhoneNumbers.Add(friendPhoneNumber);
+        }
+
+        public void RemovePhoneNumber(FriendPhoneNumber friendPhoneNumber)
+        {
+            _context.FriendPhoneNumbers.Remove(friendPhoneNumber);
         }
     }
 }

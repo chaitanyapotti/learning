@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using FriendOrganizer.Model;
+using FriendOrganizer.UI.Wrapper;
 
 namespace FriendOrganizer.UI.Data.Repositories
 {
@@ -15,5 +16,13 @@ namespace FriendOrganizer.UI.Data.Repositories
         Task SaveAsync();
 
         bool HasChanges();
+
+        void Add(Friend friend);
+
+        void Delete(Friend friend);
+
+        void AddPhoneNumber(FriendPhoneNumber friendPhoneNumber);
+
+        void RemovePhoneNumber(FriendPhoneNumber friendPhoneNumber);
     }
 }

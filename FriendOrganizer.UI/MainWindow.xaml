@@ -8,13 +8,24 @@
         mc:Ignorable="d"
         Title="Friend Organizer" Height="700" Width="1000" FontSize="20">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Header="Create">
+                <MenuItem Header="New Friend" Command="{Binding CreateNewFriendCommand}" />
+            </MenuItem>
+        </Menu>
+        
+
         <!--<ListView ItemsSource="{Binding Friends}" SelectedItem="{Binding SelectedFriend, Mode=TwoWay}" DisplayMemberPath="FirstName" />-->
-        <view:NavigationView DataContext="{Binding NavigationViewModel}"/>
-        <view:FriendDetailView Grid.Column="1" DataContext="{Binding FriendDetailViewModel}"/>
+        <view:NavigationView Grid.Row="1" Grid.Column="0" DataContext="{Binding NavigationViewModel}"/>
+        <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding FriendDetailViewModel}"/>
         <!--<Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />

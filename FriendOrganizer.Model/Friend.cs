@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -23,5 +24,11 @@ namespace FriendOrganizer.Model
         [MaxLength(50)]
         [EmailAddress]
         public string Email { get; set; }
+
+        public int? FavoriteLanguageId { get; set; }
+
+        public ProgrammingLanguage FavoriteLanguage { get; set; }
+
+        public ICollection<FriendPhoneNumber> PhoneNumbers { get; set; } = new Collection<FriendPhoneNumber>();
     }
 }
