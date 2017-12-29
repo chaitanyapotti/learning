@@ -68,6 +68,14 @@
     <Compile Include="Migrations\201712252238419_addedfriendphonenumbers.Designer.cs">
       <DependentUpon>201712252238419_addedfriendphonenumbers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712270516527_meeting.cs" />
+    <Compile Include="Migrations\201712270516527_meeting.Designer.cs">
+      <DependentUpon>201712270516527_meeting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712290513574_addedrowversion.cs" />
+    <Compile Include="Migrations\201712290513574_addedrowversion.Designer.cs">
+      <DependentUpon>201712290513574_addedrowversion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -98,6 +106,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712252238419_addedfriendphonenumbers.resx">
       <DependentUpon>201712252238419_addedfriendphonenumbers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712270516527_meeting.resx">
+      <DependentUpon>201712270516527_meeting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712290513574_addedrowversion.resx">
+      <DependentUpon>201712290513574_addedrowversion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

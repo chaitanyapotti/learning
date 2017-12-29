@@ -4,49 +4,94 @@
              xmlns:local="clr-namespace:FriendOrganizer.UI"
              xmlns:viewModel="clr-namespace:FriendOrganizer.UI.ViewModel"
              xmlns:view="clr-namespace:FriendOrganizer.UI.View"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              Startup="App_OnStartup" DispatcherUnhandledException="App_OnDispatcherUnhandledException">
     <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
+                        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+                        <!-- Accent and AppTheme setting -->
+                        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                        <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+                <ResourceDictionary>
+                    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
-        <DataTemplate DataType="{x:Type viewModel:FriendDetailViewModel}">
-            <view:FriendDetailView />
-        </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:FriendDetailViewModel}">
+                        <view:FriendDetailView />
+                    </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type viewModel:MeetingDetailViewModel}">
+                        <view:MeetingDetailView />
+                    </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type viewModel:ProgrammingLanguageDetailViewModel}">
+                        <view:ProgrammingLanguageDetailView />
+                    </DataTemplate>
+
+                    <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                        <Setter Property="FontSize" Value="16"></Setter>
+                    </Style>
+
+                    <Style TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}">
+                        <Setter Property="FontSize" Value="20"></Setter>
+                    </Style>
+
+                    <Style TargetType="Label" BasedOn="{StaticResource {x:Type Label}}">
+                        <Setter Property="Foreground" Value="#CCCCCC"></Setter>
+                    </Style>
+
+                    <Style TargetType="xctk:DateTimePicker" BasedOn="{StaticResource {x:Type xctk:DateTimePicker}}">
+                        <Setter Property="Foreground" Value="White"></Setter>
+                    </Style>
 
 
-        <Style x:Key="DataGridColumnStyle" TargetType ="TextBlock">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="True" >
-                    <Setter Property="Background" Value="Red"></Setter>
-                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"></Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
 
-        <Style x:Key="DataGridEditingColumnStyle" TargetType="TextBox">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="True" >
-                    <Setter Property="Background" Value="Red"></Setter>
-                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"></Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+                    <Style x:Key="DataGridColumnStyle" TargetType ="TextBlock">
+                        <Style.Triggers>
+                            <Trigger Property="Validation.HasError" Value="True" >
+                                <Setter Property="Background" Value="DarkRed"></Setter>
+                                <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
 
-        <Style TargetType="TextBox">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="True" >
-                    <Setter Property="Validation.ErrorTemplate">
-                        <Setter.Value>
-                            <ControlTemplate>
-                                <StackPanel>
-                                    <AdornedElementPlaceholder x:Name="Placeholder"/>
-                                    <TextBlock Text="{Binding ElementName=Placeholder, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}" Foreground="Red" FontSize="12"></TextBlock>
-                                </StackPanel>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Setter Property="Background" Value="Red"></Setter>
-                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"></Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+                    <Style x:Key="DataGridEditingColumnStyle" TargetType="TextBox">
+                        <Style.Triggers>
+                            <Trigger Property="Validation.HasError" Value="True" >
+                                <Setter Property="Background" Value="DarkRed"></Setter>
+                                <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                    <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                        <Setter Property="FontSize" Value="20"></Setter>
+                        <Style.Triggers>
+                            <Trigger Property="Validation.HasError" Value="True" >
+                                <Setter Property="Validation.ErrorTemplate">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <StackPanel>
+                                                <AdornedElementPlaceholder x:Name="Placeholder"/>
+                                                <TextBlock Text="{Binding ElementName=Placeholder, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}" Foreground="White" FontSize="12"></TextBlock>
+                                            </StackPanel>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Background" Value="DarkRed"></Setter>
+                                <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

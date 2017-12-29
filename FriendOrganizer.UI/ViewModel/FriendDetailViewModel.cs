@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,35 +20,36 @@ using Prism.Events;
 
 namespace FriendOrganizer.UI.ViewModel
 {
-    public class FriendDetailViewModel : ViewModelBase, IFriendDetailViewModel
+    public class FriendDetailViewModel : DetailViewModelBase, IFriendDetailViewModel
     {
         private readonly IFriendRepository _friendRepository;
-        private readonly IEventAggregator _eventAggregator;
-        private readonly IMessageDialogService _messageDialogService;
         private readonly IProgrammingLanguageLookupDataService _programmingLanguageLookupDataService;
         private FriendWrapper _friend;
 
         public FriendDetailViewModel(IFriendRepository friendRepository, IEventAggregator eventAggregator, IMessageDialogService messageDialogService,
-            IProgrammingLanguageLookupDataService programmingLanguageLookupDataService)
+            IProgrammingLanguageLookupDataService programmingLanguageLookupDataService) : base(eventAggregator, messageDialogService)
         {
             _friendRepository = friendRepository;
-            _eventAggregator = eventAggregator;
-            _messageDialogService = messageDialogService;
             _programmingLanguageLookupDataService = programmingLanguageLookupDataService;
             PhoneNumbers = new ObservableCollection<FriendPhoneNumberWrapper>();
             ProgrammingLanguages = new ObservableCollection<LookupItem>();
-            SaveCommand = new DelegateCommand(OnSaveExecute, OnSaveCanExecute);
-            DeleteCommand = new DelegateCommand(OnDeleteExecute);
+            _eventAggregator.GetEvent<AfterCollectionSavedEvent>().Subscribe(AfterCollectionSaved);
 
             AddPhoneNumberCommand = new DelegateCommand(OnAddPhoneNumberExecute);
             RemovePhoneNumberCommand = new DelegateCommand(OnRemovePhoneNumberExecute, OnRemovePhoneNumberCanExecute);
         }
 
+        private async void AfterCollectionSaved(AfterCollectionSavedEventArgs args)
+        {
+            if (args.ViewModelName == nameof(ProgrammingLanguageDetailViewModel))
+                await LoadProgrammingLanguagesLookupAsync();
+        }
+
         private void OnRemovePhoneNumberExecute()
         {
             SelectedPhoneNumber.PropertyChanged -= FriendPhoneNumberOnPropertyChanged;
-            PhoneNumbers.Remove(SelectedPhoneNumber);
             _friendRepository.RemovePhoneNumber(SelectedPhoneNumber.Model);
+            PhoneNumbers.Remove(SelectedPhoneNumber);
             SelectedPhoneNumber = null;
             HasChanges = _friendRepository.HasChanges();
             ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
@@ -56,11 +59,11 @@ namespace FriendOrganizer.UI.ViewModel
 
         private void OnAddPhoneNumberExecute()
         {
-            var newNumber =  new FriendPhoneNumberWrapper(new FriendPhoneNumber());
+            var newNumber = new FriendPhoneNumberWrapper(new FriendPhoneNumber());
             newNumber.PropertyChanged += FriendPhoneNumberOnPropertyChanged;
 
             PhoneNumbers.Add(newNumber);
-            _friendRepository.AddPhoneNumber(newNumber.Model);
+            Friend.Model.PhoneNumbers.Add(newNumber.Model);
             newNumber.Number = "";
         }
 
@@ -83,21 +86,30 @@ namespace FriendOrganizer.UI.ViewModel
 
 
 
-        private async void OnDeleteExecute()
+        protected override async void OnDeleteExecute()
         {
-            var result = _messageDialogService.ShowOkCancelDialog($"Do you really want to delete {Friend.FirstName} {Friend.LastName} ?", "Question");
+
+            if (await _friendRepository.HasMeetingsAsync(Friend.Id))
+            {
+                await _messageDialogService.ShowInfoDialog($"{Friend.FirstName} {Friend.LastName} has a meeting and can't be deleted");
+                return;
+                ;
+            }
+
+            var result = await _messageDialogService.ShowOkCancelDialog($"Do you really want to delete {Friend.FirstName} {Friend.LastName} ?", "Question");
             if (result == MessageDialogResult.Ok)
             {
                 _friendRepository.Delete(Friend.Model);
                 await _friendRepository.SaveAsync();
-
-                _eventAggregator.GetEvent<AfterFriendDeletedEvent>().Publish(Friend.Id);
+                RaiseDetailDeletedEvent(Friend.Id);
             }
         }
 
-        public async Task LoadAsync(int? friendId)
+        public override async Task LoadAsync(int friendId)
         {
-            var friend = friendId.HasValue ? await _friendRepository.GetFriendByIdAsync(friendId.Value) : CreateNewFriend();
+            var friend = friendId > 0 ? await _friendRepository.GetByIdAsync(friendId) : CreateNewFriend();
+            Id = friendId;
+
             InitializeFriend(friend);
 
             IntializeFriendPhoneNumbers(friend.PhoneNumbers);
@@ -125,7 +137,7 @@ namespace FriendOrganizer.UI.ViewModel
         private void FriendPhoneNumberOnPropertyChanged(object o, PropertyChangedEventArgs e)
         {
             if (!HasChanges) HasChanges = _friendRepository.HasChanges();
-            if(e.PropertyName.Equals(nameof(FriendPhoneNumberWrapper.HasErrors))) ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
+            if (e.PropertyName.Equals(nameof(FriendPhoneNumberWrapper.HasErrors))) ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
         }
 
         private void InitializeFriend(Friend friend)
@@ -139,6 +151,9 @@ namespace FriendOrganizer.UI.ViewModel
                     HasChanges = _friendRepository.HasChanges();
                 }
                 if (args.PropertyName == nameof(Friend.HasErrors)) ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
+
+                if (args.PropertyName == nameof(Friend.FirstName) || args.PropertyName == nameof(Friend.LastName))
+                    SetTitle();
             };
             ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
 
@@ -146,6 +161,12 @@ namespace FriendOrganizer.UI.ViewModel
             {
                 Friend.FirstName = "";
             }
+            SetTitle();
+        }
+
+        private void SetTitle()
+        {
+            Title = Friend.FirstName + " " + Friend.LastName;
         }
 
         private async Task LoadProgrammingLanguagesLookupAsync()
@@ -176,47 +197,28 @@ namespace FriendOrganizer.UI.ViewModel
             }
         }
 
-        private bool _hasChanges;
-
-        public bool HasChanges
-        {
-            get { return _hasChanges; }
-            set
-            {
-                if (_hasChanges != value)
-                {
-                    _hasChanges = value;
-                    OnPropertyChanged();
-                    ((DelegateCommand)SaveCommand).RaiseCanExecuteChanged();
-                }
-            }
-        }
-
-
-        public ICommand SaveCommand { get; }
-
-        public ICommand DeleteCommand { get; set; }
-
         public ICommand AddPhoneNumberCommand { get; set; }
 
         public ICommand RemovePhoneNumberCommand { get; set; }
 
 
 
-        private bool OnSaveCanExecute()
+        protected override bool OnSaveCanExecute()
         {
             return Friend != null && !Friend.HasErrors && HasChanges && PhoneNumbers.All(x => !x.HasErrors);
         }
 
-        private async void OnSaveExecute()
+        protected override async void OnSaveExecute()
         {
-            await _friendRepository.SaveAsync();
-            HasChanges = _friendRepository.HasChanges();
-            _eventAggregator.GetEvent<AfterFriendSavedEvent>().Publish(new AfterFriendSavedEventArgs() { Id = Friend.Id, DisplayMember = Friend.FirstName + " " + Friend.LastName });
+            await SaveWithOptimisticConcurrencyAsync(_friendRepository.SaveAsync, () =>
+            {
+                HasChanges = _friendRepository.HasChanges();
+                Id = Friend.Id;
+                RaiseDetailSavedEvent(Friend.Id, Friend.FirstName + " " + Friend.LastName);
+            });
+
+
         }
-
-
-
-
+        
     }
 }

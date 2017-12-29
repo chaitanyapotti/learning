@@ -5,24 +5,11 @@ using FriendOrganizer.UI.Wrapper;
 
 namespace FriendOrganizer.UI.Data.Repositories
 {
-    public interface IFriendRepository
+    public interface IFriendRepository : IGenericRepository<Friend>
     {
-        IEnumerable<Friend> GetAll();
-
-        Task<List<Friend>> GetAllAsync();
-
-        Task<Friend> GetFriendByIdAsync(int friendId);
-
-        Task SaveAsync();
-
-        bool HasChanges();
-
-        void Add(Friend friend);
-
-        void Delete(Friend friend);
-
-        void AddPhoneNumber(FriendPhoneNumber friendPhoneNumber);
 
         void RemovePhoneNumber(FriendPhoneNumber friendPhoneNumber);
+
+        Task<bool> HasMeetingsAsync(int friendId);
     }
 }
