@@ -18,14 +18,14 @@ void MergeArrays();
 void PascalTriangle();
 int main()
 {
-	//RockPaperScissors();
+	RockPaperScissors();
 	//Diamond();
 	//PalindromeCheck();
 	//Shuffle();
 	//MinShuffles();
 	//SieveOfEratosthenes();
 	//MergeArrays();
-	PascalTriangle();
+	//PascalTriangle();
 	/*cout << "Hello world.! \n";
 
 	int i = 0;

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include<iostream>
-#include <cstdlib>
+//#include <cstdlib>
 #include <iomanip>
 #include <string>
 #include <fstream>
