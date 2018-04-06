@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2026
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cpp code", "ConsoleApplication1\ConsoleApplication1.vcxproj", "{C4F46F64-852E-47AB-8125-73DB78DB14C8}"
 EndProject
@@ -180,6 +180,15 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Async Programming", "Async Programming", "{D6149580-EC1A-48C1-8F9B-9DAE06FA4F58}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncLesson1-Task", "AsyncLesson1-Task\AsyncLesson1-Task.csproj", "{2D2285B4-D870-482D-B53E-29932CE1F545}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DutchTreat Net Core", "DutchTreat Net Core", "{127503FF-ECC8-4B0D-95D7-FBEA91144D5F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AbhiProject", "AbhiProject\AbhiProject.vcxproj", "{E7E5EE9E-65F2-432E-9F63-8907E54C5B9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HTML Fundamentals", "HTML Fundamentals", "{9AF28161-7411-4F0E-90FE-ED8B18DD9CF2}"
+	ProjectSection(SolutionItems) = preProject
+		index.html = index.html
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -965,6 +974,16 @@ Global
 		{2D2285B4-D870-482D-B53E-29932CE1F545}.Release|x64.Build.0 = Release|Any CPU
 		{2D2285B4-D870-482D-B53E-29932CE1F545}.Release|x86.ActiveCfg = Release|Any CPU
 		{2D2285B4-D870-482D-B53E-29932CE1F545}.Release|x86.Build.0 = Release|Any CPU
+		{E7E5EE9E-65F2-432E-9F63-8907E54C5B9E}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{E7E5EE9E-65F2-432E-9F63-8907E54C5B9E}.Debug|x64.ActiveCfg = Debug|x64
+		{E7E5EE9E-65F2-432E-9F63-8907E54C5B9E}.Debug|x64.Build.0 = Debug|x64
+		{E7E5EE9E-65F2-432E-9F63-8907E54C5B9E}.Debug|x86.ActiveCfg = Debug|Win32
+		{E7E5EE9E-65F2-432E-9F63-8907E54C5B9E}.Debug|x86.Build.0 = Debug|Win32
+		{E7E5EE9E-65F2-432E-9F63-8907E54C5B9E}.Release|Any CPU.ActiveCfg = Release|Win32
+		{E7E5EE9E-65F2-432E-9F63-8907E54C5B9E}.Release|x64.ActiveCfg = Release|x64
+		{E7E5EE9E-65F2-432E-9F63-8907E54C5B9E}.Release|x64.Build.0 = Release|x64
+		{E7E5EE9E-65F2-432E-9F63-8907E54C5B9E}.Release|x86.ActiveCfg = Release|Win32
+		{E7E5EE9E-65F2-432E-9F63-8907E54C5B9E}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
