@@ -1,9 +1,32 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>index</title>
+    <title>Hello HTML</title>
+    <meta name="Author" content="Chaitanya Potti" />
+    <meta name="Description" content="Sample for HTML Course" />
+    <meta name="keywords" content="Pluralsight, sample, learning" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    
+    <script type="text/javascript">
+        window.onload = function() {
+            //alert("Loaded Website");
+            document.getElementById("myMessage").innerHTML = "Hello Javascript";
+        };
+    </script>
+    <style type="text/css">
+        body {color: red}
+        .message {color:green; font-weight:bold}
+    </style>
+    
+    <!--<base href="http://www.google.com/"/>-->
+
+    <link rel="stylesheet" type="text/css" href="index.css"/>
 </head>
 <body>
-    
+    <p id="myMessage" class="message">Hello World</p>
+    <h1>HTML Fundamentals</h1>
+    <h2>Overview</h2>
+    <h3>Objectives</h3>
+    <h3>Outline</h3>
 </body>
 </html>

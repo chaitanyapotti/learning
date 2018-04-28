@@ -1,0 +1,37 @@
+﻿body {
+    padding: 0;
+    margin: 0;
+}
+
+#figure1 {
+    float: left;
+    margin: 5px 0 0 0;
+}
+
+.clear {
+    clear: both;
+}
+
+#authorinfo {
+    float: left;
+    width: 300px;
+}
+
+#content {
+    float: left;
+    width: 600px;
+}
+
+#header {
+    /*position: absolute;
+    top: 15px;
+    left: 5px;*/
+    width: 1600px;
+    height: 100px;
+    text-align: center;
+}
+
+#links {
+    float: left;
+    width: 100px;
+}

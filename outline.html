@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        abbr {
+            color: green
+        }
+
+        .highlight {
+            text-decoration: underline
+        }
+        ul.square {
+            list-style-type:square
+        }
+        ul.cirle {
+            list-style-type: circle
+        }
+        ul.disc {
+            list-style-type: disc
+        }
+        ol.withAlpha {
+            list-style-type:lower-alpha
+        }
+        ol.withRoman {
+            list-style-type: lower-roman
+        }
+        ol.withUpperAlpha {
+            list-style-type: upper-alpha
+        }
+        ol.withUpperRoman {
+            list-style-type: upper-roman
+        }
+    </style>
+    <title>Hello HTML</title>
+    <meta name="Author" content="Chaitanya Potti" />
+    <meta name="Description" content="Sample for HTML Course" />
+    <meta name="keywords" content="Pluralsight, sample, learning" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+    <h1>HTML Fundamentals</h1>
+    <h2>Overview</h2>
+    <div id="overviewContainer">
+        <!--This is my <span>overview</span>
+        -->
+        <p>
+            <span id="htmlTag" class="highlight">
+                <abbr title="HyperText Markup Language">HTML</abbr> drives the web.
+            </span>
+            these <a href="#terminology">terminology</a> topics are covered in <sup>1,2</sup>
+        </p>
+        <p>
+            A little history about <abbr title="HyperText Markup Language">HTML</abbr>.
+            <cite> Tim berners lee</cite> created the internet
+            <blockquote cite="http://www.google.com">
+                wW3 is the shit
+            </blockquote>
+        </p>
+    </div>
+    <div id="secondDiv">This is another div</div>
+    <p>this ia&nbsp;a fknvdfnkjvdfvndfvndfnvdfvndfvdfkjnvdfkjnvkdjfvkjdfnvkdjfvnkjdfnvdkfnvkdjfnvkdjfvndkjfvnkjfdv</p>
+    <p>this ia a fknvdfnkjvdfvndfvndfnvdfvndfvdfkjnvdfkjnvkdjfvkjdfnvkdjfvnkjdfnvdkfnvkdjfnvkdjfvndkjfvnkjfdv</p>
+
+    <h2>Examples</h2>
+    <div id="examplesContainer">
+        <h3>WhiteSpace</h3>
+        <p>
+            this ia a fknvdfnkjvdfvndfvndfnvdf  vndfvdfkjnvdfk
+            jnvkdjfvkjdfnvkdjfvnkjdfnvdkfnvkdjfnvkdjfvndkjfvnkjfdv
+        </p>
+        <hr />
+        <pre>
+This is a         haiku
+    Aa boring haiku
+</pre>
+        <hr />
+        <span> this is a </span>
+        <br /><span>span</span>
+    </div>
+    <hr />
+    <div> This is how you show a &lt;div&gt;</div>
+    <br />
+
+    <h3>Objectives</h3>
+    <ul class="square">
+        <li>Explain Fundamental Concepts of HTML</li>
+        <li>
+            Have fun
+            <ul class="disc">
+                <li>Creating documents</li>
+                <li>Creating memories</li>
+            </ul>
+        </li>
+
+        <li>Mark it up!</li>
+    </ul>
+    <h3>Outline</h3>
+    <ol class="withAlpha">
+        <li>Introduction</li>
+        <li><a href="./lists.html#hiMark">Text Elements</a></li>
+        <li>
+            <a href="./lists.html#deeplink">Lists</a>
+            <ol start="5" class="withUpperRoman">
+                <li value="6">Unordered lists</li>
+                <li>Ordered lists</li>
+                <li>Definition lists</li>
+            </ol>
+        </li>
+        <li>Links</li>
+    </ol>
+
+    <br />
+    <h3><a name="terminology" title="Technical Terms">Terminology</a> </h3>
+    <dl>
+        <dt>HTML</dt>
+        <dd>Hyper Text Markup Language</dd>
+        <dt>CSS</dt>
+        <dd>Cascaded Style Sheets</dd>
+    </dl>
+
+    <br />
+    <br />
+    <br />
+    <br />
+</body>
+</html>

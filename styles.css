@@ -1,0 +1,45 @@
+﻿@import url("styles2.css");
+
+body {
+    font-size: 150%;
+    margin: 0;
+    padding: 0;
+    background-color: #cccccc;
+}
+
+div {
+    font-size: 500%
+}
+
+div > p {
+    font-size: 50%
+}
+
+p {
+    background-color: gray;
+}
+
+.menu {
+    list-style: none;
+    text-align: center;
+}
+
+.menu li:hover {
+    background-color: #cc9999;
+}
+
+.menu li {
+    background-color: #cccc99;
+    display: inline-block;
+    padding: 3px 0 0 10px;
+    /*margin: 5px;*/
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-bottom-width: 2px;
+    /*border-left: 10px solid maroon;*/
+}
+
+.menu li > a {
+    text-decoration: none;
+    color: black;
+}

@@ -1,0 +1,34 @@
+﻿body {
+    background: #cccc99;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-family: "Times New Roman", serif;
+    font-size: 1.2em;
+    /*text-decoration: underline;*/
+    /*letter-spacing: 1.1em;*/
+    text-align: center;
+}
+
+.content {
+    background: #eeeecc;
+    padding: 7px;
+    /*text-indent: 3em;*/
+}
+
+.code {
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+ol {
+    /*font: italic 0.9em serif;*/
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.copyright {
+    font-weight: bold;
+    font-size: 0.8em;
+}

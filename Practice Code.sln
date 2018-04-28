@@ -187,8 +187,37 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AbhiProject", "AbhiProject\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HTML Fundamentals", "HTML Fundamentals", "{9AF28161-7411-4F0E-90FE-ED8B18DD9CF2}"
 	ProjectSection(SolutionItems) = preProject
+		index.css = index.css
 		index.html = index.html
+		outline.html = outline.html
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "content", "content", "{3A7020E6-5DBE-4361-9878-CA9F0B6D9557}"
+	ProjectSection(SolutionItems) = preProject
+		lists.html = lists.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cssExample", "cssExample", "{F078D294-B223-4DF6-8B10-DF6B658E42B4}"
+	ProjectSection(SolutionItems) = preProject
+		Simple.html = Simple.html
+		styles.css = styles.css
+		styles2.css = styles2.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "textExample", "textExample", "{2E28F23A-81FD-416E-9746-391D54D16159}"
+	ProjectSection(SolutionItems) = preProject
+		style.css = style.css
+		text.html = text.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "flow", "flow", "{3FFFCA4B-EEBC-474B-A432-1483079781BB}"
+	ProjectSection(SolutionItems) = preProject
+		flow.html = flow.html
+		flowStyle.css = flowStyle.css
+		style2.css = style2.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSS Positioning", "CSS Positioning", "{590DCA4A-E9D6-4695-B5F3-E02FAD03CD30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1058,6 +1087,10 @@ Global
 		{FF75AC9C-068F-49CB-961C-E421401EED69} = {AD0D9DBE-9DEF-4AD1-8C70-3457D3B20C53}
 		{1006BD4A-12F6-4741-97A2-9133BD8E0F17} = {AD0D9DBE-9DEF-4AD1-8C70-3457D3B20C53}
 		{2D2285B4-D870-482D-B53E-29932CE1F545} = {D6149580-EC1A-48C1-8F9B-9DAE06FA4F58}
+		{3A7020E6-5DBE-4361-9878-CA9F0B6D9557} = {9AF28161-7411-4F0E-90FE-ED8B18DD9CF2}
+		{F078D294-B223-4DF6-8B10-DF6B658E42B4} = {9AF28161-7411-4F0E-90FE-ED8B18DD9CF2}
+		{2E28F23A-81FD-416E-9746-391D54D16159} = {9AF28161-7411-4F0E-90FE-ED8B18DD9CF2}
+		{3FFFCA4B-EEBC-474B-A432-1483079781BB} = {9AF28161-7411-4F0E-90FE-ED8B18DD9CF2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D0E2A3BD-66E7-4AAE-AF2C-6CDCCD65232C}
