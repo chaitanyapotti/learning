@@ -217,7 +217,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "flow", "flow", "{3FFFCA4B-E
 		style2.css = style2.css
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSS Positioning", "CSS Positioning", "{590DCA4A-E9D6-4695-B5F3-E02FAD03CD30}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JavaScriptFundamentals", "JavaScriptFundamentals", "{DA6A23AF-CB3E-4D07-B4D1-0B62D63901F5}"
+	ProjectSection(SolutionItems) = preProject
+		JavaScriptFundamentals\index.html = JavaScriptFundamentals\index.html
+		JavaScriptFundamentals\script.js = JavaScriptFundamentals\script.js
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
