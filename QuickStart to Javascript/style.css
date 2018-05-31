@@ -1,0 +1,33 @@
+﻿body {
+    background-color : darkgrey; 
+    color : white;
+}
+
+.building {
+    border-width: medium;
+    stroke: darkgray;
+    box-shadow: rgba(0,0,0,4);
+    width : 130px;
+    height : 550px;
+    margin : 0% 50% 0% 50%;
+    border-style : solid;
+    border-color : darkblue;
+    display : block;
+    background-color : lightgray;
+}
+
+.windowL {
+    background-color : lightseagreen;
+    width : 50px;
+    height:  100px;
+    margin : 5px 5px 5px 5px;
+    float : left;
+}
+
+.windowR {
+    background-color: dodgerblue;
+    width: 50px;
+    height: 100px;
+    margin: 5px 5px 5px 5px;
+    float : left;
+}
