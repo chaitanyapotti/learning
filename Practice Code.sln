@@ -227,6 +227,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QuickStart to Javascript", 
 	ProjectSection(SolutionItems) = preProject
 		QuickStart to Javascript\index.html = QuickStart to Javascript\index.html
 		QuickStart to Javascript\script.js = QuickStart to Javascript\script.js
+		QuickStart to Javascript\script2.js = QuickStart to Javascript\script2.js
 		QuickStart to Javascript\style.css = QuickStart to Javascript\style.css
 	EndProjectSection
 EndProject
