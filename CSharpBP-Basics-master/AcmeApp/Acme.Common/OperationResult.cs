@@ -10,7 +10,7 @@
         {
         }
 
-        private OperationResult(bool success, string message) : this()
+        public OperationResult(bool success, string message) : this()
         {
             this.Success = success;
             this.Message = message;

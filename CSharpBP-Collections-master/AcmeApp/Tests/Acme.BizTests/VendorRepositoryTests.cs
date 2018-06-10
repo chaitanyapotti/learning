@@ -11,6 +11,6 @@ namespace Acme.Biz.Tests
     [TestClass()]
     public class VendorRepositoryTests
     {
-        CollectionAssert
+        //CollectionAssert
     }
 }

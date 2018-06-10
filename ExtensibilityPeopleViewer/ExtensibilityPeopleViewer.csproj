@@ -95,20 +95,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PersonRepository.CSV\PersonRepository.CSV.csproj">
-      <Project>{5a4aa156-21ef-4172-a16e-0a8829293837}</Project>
-      <Name>PersonRepository.CSV</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PersonRepository.Interface\PersonRepository.Interface.csproj">
-      <Project>{2999CBC5-8FAA-462B-BDB6-40A0A714A7FE}</Project>
-      <Name>PersonRepository.Interface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PersonRepository.Service\PersonRepository.Service.csproj">
-      <Project>{3d01e97b-50ec-4522-af2a-5f28d01a69ce}</Project>
-      <Name>PersonRepository.Service</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

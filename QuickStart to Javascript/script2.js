@@ -16,8 +16,8 @@ myCoffee.temperature = "cold";
 myCoffee.reheat();
 
 
-class Friend {
-    constructor Friend(name, tShirtColor) {
+//class Friend {
+//    constructor Friend(name, tShirtColor) {
 
-    }
-}
+//    }
+//}

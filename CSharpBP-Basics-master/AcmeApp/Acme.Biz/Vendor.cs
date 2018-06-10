@@ -25,10 +25,7 @@ namespace Acme.Biz
         /// <param name="product">Product to Order</param>
         /// <param name="quantity">Quantity of product to Order</param>
         /// <returns></returns>
-        public OperationResult PlaceOrder(Product product, int quantity)
-        {
-            return PlaceOrder(product, quantity, null);
-        }
+        public OperationResult PlaceOrder(Product product, int quantity) => PlaceOrder(product, quantity, deliverBy: null);
         /// <summary>
         /// Sends a Product Order to the vendor
         /// </summary>
@@ -74,5 +71,10 @@ namespace Acme.Biz
         }
 
         public override string ToString() => ($"Vendor: {CompanyName}");
+
+        public object PlaceOrder(Product product, int quantity, string instructions)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

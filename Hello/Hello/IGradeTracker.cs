@@ -2,7 +2,7 @@
 
 namespace Hello
 {
-    internal interface IGradeTracker : IEnumerable
+    public interface IGradeTracker : IEnumerable
     {
         void AddGrade(double grade);
 

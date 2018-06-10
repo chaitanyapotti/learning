@@ -75,6 +75,7 @@ namespace Acme.Biz
         public string Category { get; set; }
 
         public int SequenceNumber { get; set; } = 1;
+        public object ValidationMessage { get; set; }
 
         public decimal CalculateSuggestedPrice(decimal markupPercent) => this.Cost * (1 + markupPercent / 100);
 

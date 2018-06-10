@@ -116,12 +116,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PersonRepository.Interface\PersonRepository.Interface.csproj">
-      <Project>{2999CBC5-8FAA-462B-BDB6-40A0A714A7FE}</Project>
-      <Name>PersonRepository.Interface</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
