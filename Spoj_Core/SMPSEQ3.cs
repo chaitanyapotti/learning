@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Spoj
+namespace Spoj_Core
 {
-    class SMPSEQ4
+    class SMPSEQ3
     {
-        public SMPSEQ4()
+        public SMPSEQ3()
         {
             Init();
         }
@@ -26,7 +26,7 @@ namespace Spoj
         {
             foreach (var item in array1)
             {
-                if (Find(array2, item)) Console.Write(item + " ");
+                if (!Find(array2, item)) Console.Write(item + " ");
             }
             //Console.ReadLine();
         }

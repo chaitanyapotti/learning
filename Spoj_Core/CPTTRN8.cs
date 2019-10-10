@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Spoj
+namespace Spoj_Core
 {
-    class CPTTRN5
+    class CPTTRN8
     {
-        public CPTTRN5()
+        public CPTTRN8()
         {
             Init();
         }
@@ -16,33 +16,41 @@ namespace Spoj
         {
             int entriesCount = 0;
             int.TryParse(Console.ReadLine(), out entriesCount);
-            int[] rows = new int[entriesCount];
-            int[] cols = new int[entriesCount];
+            int[] horz = new int[entriesCount];
+            int[] vert = new int[entriesCount];
             int[] sizes = new int[entriesCount];
+            int[] widths = new int[entriesCount];
             for (int i = 0; i < entriesCount; i++)
             {
                 string temp = Console.ReadLine();
-                int.TryParse(temp.Split(' ')[0], out rows[i]);
-                int.TryParse(temp.Split(' ')[1], out cols[i]);
+                int.TryParse(temp.Split(' ')[0], out horz[i]);
+                int.TryParse(temp.Split(' ')[1], out vert[i]);
                 int.TryParse(temp.Split(' ')[2], out sizes[i]);
                 //i++;
             }
-            Execute(rows, cols, sizes, entriesCount);
+            Execute(horz, vert, sizes, entriesCount);
         }
 
         public void Execute(int[] rows, int[] cols, int[] sizes, int entriesCount)
         {
             for (int k = 0; k < entriesCount; k++)
             {
-                for (int j = 0; j < (sizes[k] + 1) * rows[k] + 1; j++)
+                for (int j = 0; j < 2 * rows[k] * sizes[k]; j++)
                 {
-                    for (int i = 0; i < (sizes[k] + 1) * cols[k] + 1; i++)
+                    for (int i = 0; i < 2 * cols[k] * sizes[k]; i++)
                     {
-                        if (i % (sizes[k] + 1) == 0 || j % (sizes[k] + 1) == 0) Console.Write("*");
+                        int s = sizes[k];
+                        int h = j % s;
+                        int w = i % s;
+                        int hi = j / s;
+                        int wi = i / s;
+                        if ((hi % 2 == 0 && wi % 2 == 0) || (hi % 2 != 0 && wi % 2 != 0))
+                        {
+                            Console.Write(h + w == s - 1 ? "/" : ".");
+                        }
                         else
                         {
-                            if ((j / (sizes[k] + 1) + i / (sizes[k] + 1)) % 2 == 0) Console.Write(i % (sizes[k] + 1) == j % (sizes[k] + 1) ? '\\' : '.');
-                            else Console.Write(i % (sizes[k] + 1) == (sizes[k] + 1) - j % (sizes[k] + 1) ? '/' : '.');
+                            Console.Write(h == w ? "\\" : ".");
                         }
                     }
                     Console.Write("\n");

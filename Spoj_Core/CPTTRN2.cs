@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Spoj
+namespace Spoj_Core
 {
-    class CPTTRN3
+    class CPTTRN2
     {
-        public CPTTRN3()
+        public CPTTRN2()
         {
             Init();
         }
@@ -32,12 +32,12 @@ namespace Spoj
         {
             for (int k = 0; k < entriesCount; k++)
             {
-                for (int j = 0; j < 3 * rows[k] + 1; j++)
+                for (int j = 0; j < rows[k]; j++)
                 {
-                    for (int i = 0; i < 3 * cols[k] + 1; i++)
+                    for (int i = 0; i < cols[k]; i++)
                     {
-                        if (i % 3 == 0 || j % 3 == 0) Console.Write("*");
-                        else Console.Write(".");
+                        if (j == 0 || j == rows[k] - 1 || i == 0 || i == cols[k] - 1) Console.Write('*');
+                        else Console.Write('.');
                     }
                     Console.Write("\n");
                 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Spoj
+namespace Spoj_Core
 {
     public class HS12MBR
     {

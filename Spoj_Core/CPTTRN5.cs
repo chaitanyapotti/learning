@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Spoj
+namespace Spoj_Core
 {
-    class CPTTRN2
+    class CPTTRN5
     {
-        public CPTTRN2()
+        public CPTTRN5()
         {
             Init();
         }
@@ -18,26 +18,32 @@ namespace Spoj
             int.TryParse(Console.ReadLine(), out entriesCount);
             int[] rows = new int[entriesCount];
             int[] cols = new int[entriesCount];
+            int[] sizes = new int[entriesCount];
             for (int i = 0; i < entriesCount; i++)
             {
                 string temp = Console.ReadLine();
                 int.TryParse(temp.Split(' ')[0], out rows[i]);
                 int.TryParse(temp.Split(' ')[1], out cols[i]);
+                int.TryParse(temp.Split(' ')[2], out sizes[i]);
                 //i++;
             }
-            Execute(rows, cols, entriesCount);
+            Execute(rows, cols, sizes, entriesCount);
         }
 
-        public void Execute(int[] rows, int[] cols, int entriesCount)
+        public void Execute(int[] rows, int[] cols, int[] sizes, int entriesCount)
         {
             for (int k = 0; k < entriesCount; k++)
             {
-                for (int j = 0; j < rows[k]; j++)
+                for (int j = 0; j < (sizes[k] + 1) * rows[k] + 1; j++)
                 {
-                    for (int i = 0; i < cols[k]; i++)
+                    for (int i = 0; i < (sizes[k] + 1) * cols[k] + 1; i++)
                     {
-                        if (j == 0 || j == rows[k] - 1 || i == 0 || i == cols[k] - 1) Console.Write('*');
-                        else Console.Write('.');
+                        if (i % (sizes[k] + 1) == 0 || j % (sizes[k] + 1) == 0) Console.Write("*");
+                        else
+                        {
+                            if ((j / (sizes[k] + 1) + i / (sizes[k] + 1)) % 2 == 0) Console.Write(i % (sizes[k] + 1) == j % (sizes[k] + 1) ? '\\' : '.');
+                            else Console.Write(i % (sizes[k] + 1) == (sizes[k] + 1) - j % (sizes[k] + 1) ? '/' : '.');
+                        }
                     }
                     Console.Write("\n");
                 }

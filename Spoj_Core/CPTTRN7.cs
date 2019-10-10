@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Spoj
+namespace Spoj_Core
 {
-    class CPTTRN8
+    class CPTTRN7
     {
-        public CPTTRN8()
+        public CPTTRN7()
         {
             Init();
         }
